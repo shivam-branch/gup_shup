@@ -1,0 +1,648 @@
+{
+	"info": {
+		"_postman_id": "f0e2f669-1b13-4568-b71e-bb788e1fb0ec",
+		"name": "Gup shup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "profileManagment",
+			"item": [
+				{
+					"name": "SignUp: JWT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"shivamtripathi7499@mail.com\",\n    \"password\": \"shivam\",\n    \"roles\": [\"PATIENT\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6065/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6065",
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SignIn: JWT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"shivamtripathi7499@mail.com\",\n    \"password\": \"shivam\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6065/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6065",
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SignIn: resource",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"shivamtripathi7499@mail.com\",\n    \"password\": \"shivam\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6065/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6065",
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OTP: signIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"otp\": \"679613\",\n    \"phoneNo\": \"+918840555700\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6065/auth/verifyOtp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6065",
+							"path": [
+								"auth",
+								"verifyOtp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OTP: signUp",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"shivamtripathi7499@mail.com\",\n    \"password\": \"shivam\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6065/auth/requestOtp/+918840555700",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6065",
+							"path": [
+								"auth",
+								"requestOtp",
+								"+918840555700"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "patientManagment",
+			"item": [
+				{
+					"name": "Get: all patient",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "VALID_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:6067/api/patients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6067",
+							"path": [
+								"api",
+								"patients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get: patient by Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "VALID_TOKEN",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:6067/api/patients/ss",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6067",
+							"path": [
+								"api",
+								"patients",
+								"ss"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save: patient",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "VALID_TOKEN",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Shivam Tripathi\",\n    \"age\": 21,\n    \"medicalHistory\" :{\n        \"pastDiseases\": [\"D1\", \"D2\"],\n        \"allergies\": [\"A1\", \"A2\"],\n        \"medications\": [\"M1\", \"M2\"],\n        \"familyHistory\": \"History1, History2\"\n    },\n    \"insuranceDetails\": {\n        \"providerName\": \"providerName\",\n        \"policyNumber\": \"policyNumber\",\n        \"coverageDetails\": \"coverageDetails\",\n        \"contactNumber\" : \"coverageDetails\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6067/api/patients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6067",
+							"path": [
+								"api",
+								"patients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete: patient",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "VALID_TOKEN",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Shivam Tripathi\",\n    \"age\": 21,\n    \"medicalHistory\" :{\n        \"pastDiseases\": [\"D1\", \"D2\"],\n        \"allergies\": [\"A1\", \"A2\"],\n        \"medications\": [\"M1\", \"M2\"],\n        \"familyHistory\": \"History1, History2\"\n    },\n    \"insuranceDetails\": {\n        \"providerName\": \"providerName\",\n        \"policyNumber\": \"policyNumber\",\n        \"coverageDetails\": \"coverageDetails\",\n        \"contactNumber\" : \"coverageDetails\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6067/api/patients/665e0ce66bb5554c8d6f3ed0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6067",
+							"path": [
+								"api",
+								"patients",
+								"665e0ce66bb5554c8d6f3ed0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "elastic search",
+			"item": [
+				{
+					"name": "elastic",
+					"item": [
+						{
+							"name": "verify elastic serach",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9200",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9200"
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "query person elastic",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						},
+						{
+							"name": "/api/search",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "create person",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Name1\",\n    \"cars\": [\n        {\n            \"model\": \"m1\",\n            \"brand\": \"b1\"\n        },\n        {\n            \"model\": \"m2\",\n            \"brand\": \"b2\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:6063/api/persons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "6063",
+							"path": [
+								"api",
+								"persons"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Graphql demo",
+			"item": [
+				{
+					"name": "student query",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query ($page: Int, $size: Int) {\n  students(page: $page, size: $size) {\n    id\n    name\n    age\n    grade\n  }\n}",
+								"variables": "{\n  \"page\": 0,\n  \"size\": 10\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "student mutation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation ($student: StudentInput!) {\n  createStudent(student: $student) {\n    id\n    name\n    age\n    grade\n  }\n}",
+								"variables": "{\n  \"student\": {\n    \"name\": \"John Doe\",\n    \"age\": 20,\n    \"grade\": \"A\"\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "JWT",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstname\": \"Ali\",\n  \"lastname\": \"Bouali\",\n  \"email\":  \"alibou21@mail.com\",\n  \"password\": \"password\",\n  \"role\":  \"ADMIN\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authenticate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\":  \"alibou21@mail.com\",\n  \"password\": \"password\"\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/auth/authenticate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\":  \"alibou21@mail.com\",\n  \"password\": \"password\"\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/auth/authenticate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contact: create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"employeeId\": 1,\n    \"addressId\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6062/v1/contact",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6062",
+					"path": [
+						"v1",
+						"contact"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Address: create Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"employeeId\": 1,\n    \"stateCode\": \"MH\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6060/v1/address",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6060",
+					"path": [
+						"v1",
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Employee: create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Shivam\",\n    \"lastName\": \"Tripathi\",\n    \"stateCode\": \"UP\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6061/v1/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6061",
+					"path": [
+						"v1",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logging: create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"Shivam\",\n    \"lastName\": \"Tripathi\",\n    \"stateCode\": \"UP\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:6061/v1/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6061",
+					"path": [
+						"v1",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
